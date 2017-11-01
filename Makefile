@@ -83,6 +83,8 @@ xxhsum_inlinedXXH: xxhsum.c
 
 
 # library
+xxhash.o: xxhash.c
+	$(CC) -fPIC $(CFLAGS) -c -o xxhash.o xxhash.c
 
 libxxhash.a: ARFLAGS = rcs
 libxxhash.a: xxhash.o
