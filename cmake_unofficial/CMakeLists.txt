@@ -31,9 +31,8 @@ if (BUILD_XXHSUM)
     target_link_libraries(xxhsum xxhash)
 endif()
 
-INSTALL(FILES ../xxhash.h DESTINATION include)
-INSTALL(
-    TARGETS xxhash xxhsum
+INSTALL(TARGETS ${install_libs} DESTINATION lib)
+INSTALL(TARGETS ${install_libs}
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
