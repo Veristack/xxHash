@@ -3,11 +3,10 @@ cmake_policy(VERSION 2.6)
 
 project(xxhash)
 
-set(XXHASH_LIB_VERSION "0.6.3")
+set(XXHASH_LIB_VERSION "0.42.0")
 set(XXHASH_LIB_SOVERSION "0")
 
 option(BUILD_XXHSUM "Build the xxhsum binary" ON)
-option(BUILD_SHARED_LIBS "Build shared library" ON)
 
 # Make CMake's RPATH handling not be insane. This suff has cmake set rpaths appropriately for
 # where things end up in the install tree. For some reason that's not the default:
@@ -32,9 +31,8 @@ if (BUILD_XXHSUM)
     target_link_libraries(xxhsum xxhash)
 endif()
 
-INSTALL(FILES ../xxhash.h DESTINATION include)
-INSTALL(
-    TARGETS xxhash xxhsum
+INSTALL(TARGETS ${install_libs} DESTINATION lib)
+INSTALL(TARGETS ${install_libs}
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
